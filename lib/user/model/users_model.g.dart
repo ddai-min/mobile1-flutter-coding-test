@@ -1,10 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_model.dart';
+part of 'users_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+UsersModel _$UsersModelFromJson(Map<String, dynamic> json) => UsersModel(
+      users: (json['users'] as List<dynamic>)
+          .map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$UsersModelToJson(UsersModel instance) =>
+    <String, dynamic>{
+      'users': instance.users,
+    };
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       userId: json['userId'] as String,
@@ -28,7 +39,7 @@ const _$UserStatusEnumMap = {
   UserStatus.online: 'online',
   UserStatus.offline: 'offline',
   UserStatus.away: 'away',
-  UserStatus.doNotDisturb: 'doNotDisturb',
+  UserStatus.doNotDisturb: 'do_not_disturb',
 };
 
 const _$UserRoleEnumMap = {

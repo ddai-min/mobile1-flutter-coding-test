@@ -1,12 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+@JsonEnum(fieldRename: FieldRename.snake)
 enum UserStatus {
-  online('online'),
-  offline('offline'),
-  away('away'),
-  doNotDisturb('do_not_disturb');
-
-  final String value;
-
-  const UserStatus(
-    this.value,
-  );
+  online,
+  offline,
+  away,
+  doNotDisturb,
 }

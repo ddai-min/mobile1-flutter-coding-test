@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mobile1_flutter_coding_test/conference/view/conference_chat_screen.dart';
+import 'package:mobile1_flutter_coding_test/room/view/room_message_screen.dart';
 
-class ConferenceScreen extends StatelessWidget {
-  const ConferenceScreen({super.key});
+class RoomScreen extends StatelessWidget {
+  const RoomScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ConferenceScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               context.goNamed(
-                ConferenceChatScreen.routeName,
+                RoomMessageScreen.routeName,
               );
             },
             child: const Text('Go to Conference Chat'),

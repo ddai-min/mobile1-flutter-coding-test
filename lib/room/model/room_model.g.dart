@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'conference_model.dart';
+part of 'room_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ConferenceModel _$ConferenceModelFromJson(Map<String, dynamic> json) =>
-    ConferenceModel(
+RoomModel _$RoomModelFromJson(Map<String, dynamic> json) => RoomModel(
       roomId: json['roomId'] as String,
       roomName: json['roomName'] as String,
       creator: json['creator'] as String,
@@ -21,8 +20,7 @@ ConferenceModel _$ConferenceModelFromJson(Map<String, dynamic> json) =>
       thumbnailImage: json['thumbnailImage'] as String,
     );
 
-Map<String, dynamic> _$ConferenceModelToJson(ConferenceModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RoomModelToJson(RoomModel instance) => <String, dynamic>{
       'roomId': instance.roomId,
       'roomName': instance.roomName,
       'creator': instance.creator,

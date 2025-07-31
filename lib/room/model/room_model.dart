@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mobile1_flutter_coding_test/conference/model/message_model.dart';
+import 'package:mobile1_flutter_coding_test/room/model/message_model.dart';
 
-part 'conference_model.g.dart';
+part 'room_model.g.dart';
 
 @JsonSerializable()
-class ConferenceModel {
+class RoomModel {
   final String roomId;
   final String roomName;
   final String creator;
@@ -13,7 +13,7 @@ class ConferenceModel {
   final MessageModel? lastMessage;
   final String thumbnailImage;
 
-  ConferenceModel({
+  RoomModel({
     required this.roomId,
     required this.roomName,
     required this.creator,
@@ -23,8 +23,8 @@ class ConferenceModel {
     required this.thumbnailImage,
   });
 
-  factory ConferenceModel.fromJson(Map<String, dynamic> json) =>
-      _$ConferenceModelFromJson(json);
+  factory RoomModel.fromJson(Map<String, dynamic> json) =>
+      _$RoomModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ConferenceModelToJson(this);
+  Map<String, dynamic> toJson() => _$RoomModelToJson(this);
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile1_flutter_coding_test/common/layout/default_layout.dart';
 
-class ConferenceChatScreen extends StatelessWidget {
-  static String routeName = 'conference/chat';
+class RoomMessageScreen extends StatelessWidget {
+  static String routeName = 'room/chat';
 
-  const ConferenceChatScreen({super.key});
+  const RoomMessageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

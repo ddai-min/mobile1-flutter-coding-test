@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:mobile1_flutter_coding_test/common/view/root_tab.dart';
-import 'package:mobile1_flutter_coding_test/conference/view/conference_chat_screen.dart';
+import 'package:mobile1_flutter_coding_test/room/view/room_message_screen.dart';
 
 final router = GoRouter(
   routes: [
@@ -10,9 +10,9 @@ final router = GoRouter(
       builder: (_, __) => const RootTab(),
       routes: [
         GoRoute(
-          path: '/conference/chat',
-          name: ConferenceChatScreen.routeName,
-          builder: (_, __) => const ConferenceChatScreen(),
+          path: '/room/chat',
+          name: RoomMessageScreen.routeName,
+          builder: (_, __) => const RoomMessageScreen(),
         ),
       ],
     ),

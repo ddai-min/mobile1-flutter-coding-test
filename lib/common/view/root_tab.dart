@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile1_flutter_coding_test/common/layout/default_layout.dart';
-import 'package:mobile1_flutter_coding_test/conference/view/conference_screen.dart';
+import 'package:mobile1_flutter_coding_test/room/view/room_screen.dart';
 import 'package:mobile1_flutter_coding_test/user/view/user_screen.dart';
 
 class RootTab extends StatefulWidget {
@@ -38,12 +38,17 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final title = index == 0 ? '사용자' : '회의';
+
     return DefaultLayout(
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
+        children: [
           UserScreen(),
-          ConferenceScreen(),
+          const RoomScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
