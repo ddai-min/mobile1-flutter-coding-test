@@ -18,8 +18,8 @@ class MessagesModel {
 
 @JsonSerializable()
 class MessageModel {
-  final String roomId;
-  final String messageId;
+  final String? roomId;
+  final String? messageId;
   final String sender;
   final String content;
   final DateTime timestamp;

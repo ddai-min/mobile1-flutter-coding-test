@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile1_flutter_coding_test/common/layout/default_layout.dart';
 
 class RoomMessageScreen extends StatelessWidget {
-  static String routeName = 'room/chat';
+  static String routeName = 'room/message';
 
   const RoomMessageScreen({super.key});
 

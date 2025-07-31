@@ -10,7 +10,7 @@ final router = GoRouter(
       builder: (_, __) => const RootTab(),
       routes: [
         GoRoute(
-          path: '/room/chat',
+          path: '/room/message/:roomId',
           name: RoomMessageScreen.routeName,
           builder: (_, __) => const RoomMessageScreen(),
         ),

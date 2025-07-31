@@ -48,7 +48,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         controller: _tabController,
         children: [
           UserScreen(),
-          const RoomScreen(),
+          RoomScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
