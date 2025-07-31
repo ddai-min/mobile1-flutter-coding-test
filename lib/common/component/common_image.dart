@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CommonImage extends StatelessWidget {
@@ -18,9 +19,9 @@ class CommonImage extends StatelessWidget {
       child: SizedBox(
         width: width,
         height: height,
-        child: Image.network(
-          imageUrl,
-          errorBuilder: (context, error, stackTrace) {
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          errorWidget: (context, url, error) {
             return const Icon(
               Icons.error,
             );

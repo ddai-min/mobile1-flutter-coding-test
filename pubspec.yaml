@@ -42,6 +42,9 @@ dependencies:
   # JSON 변환
   json_annotation: ^4.9.0
 
+  # 이미지 캐싱
+  cached_network_image: ^3.4.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
