@@ -1,7 +1,21 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mobile1_flutter_coding_test/room/model/message_model.dart';
+import 'package:mobile1_flutter_coding_test/room/model/messages_model.dart';
 
-part 'room_model.g.dart';
+part 'rooms_model.g.dart';
+
+@JsonSerializable()
+class RoomsModel {
+  final List<RoomModel> chatRooms;
+
+  RoomsModel({
+    required this.chatRooms,
+  });
+
+  factory RoomsModel.fromJson(Map<String, dynamic> json) =>
+      _$RoomsModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RoomsModelToJson(this);
+}
 
 @JsonSerializable()
 class RoomModel {

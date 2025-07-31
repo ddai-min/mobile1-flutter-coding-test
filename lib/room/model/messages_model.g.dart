@@ -1,10 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'message_model.dart';
+part of 'messages_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+MessagesModel _$MessagesModelFromJson(Map<String, dynamic> json) =>
+    MessagesModel(
+      messages: (json['messages'] as List<dynamic>)
+          .map((e) => MessageModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$MessagesModelToJson(MessagesModel instance) =>
+    <String, dynamic>{
+      'messages': instance.messages,
+    };
 
 MessageModel _$MessageModelFromJson(Map<String, dynamic> json) => MessageModel(
       roomId: json['roomId'] as String,

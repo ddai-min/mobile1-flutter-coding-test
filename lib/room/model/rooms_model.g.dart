@@ -1,10 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'room_model.dart';
+part of 'rooms_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+RoomsModel _$RoomsModelFromJson(Map<String, dynamic> json) => RoomsModel(
+      chatRooms: (json['chatRooms'] as List<dynamic>)
+          .map((e) => RoomModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$RoomsModelToJson(RoomsModel instance) =>
+    <String, dynamic>{
+      'chatRooms': instance.chatRooms,
+    };
 
 RoomModel _$RoomModelFromJson(Map<String, dynamic> json) => RoomModel(
       roomId: json['roomId'] as String,
