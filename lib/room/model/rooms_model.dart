@@ -24,7 +24,7 @@ class RoomModel {
   final String creator;
   final List<String> participants;
   final DateTime createdAt;
-  final MessageModel? lastMessage;
+  final LastMessageModel? lastMessage;
   final String thumbnailImage;
 
   RoomModel({

@@ -27,7 +27,8 @@ RoomModel _$RoomModelFromJson(Map<String, dynamic> json) => RoomModel(
       createdAt: DateTime.parse(json['createdAt'] as String),
       lastMessage: json['lastMessage'] == null
           ? null
-          : MessageModel.fromJson(json['lastMessage'] as Map<String, dynamic>),
+          : LastMessageModel.fromJson(
+              json['lastMessage'] as Map<String, dynamic>),
       thumbnailImage: json['thumbnailImage'] as String,
     );
 

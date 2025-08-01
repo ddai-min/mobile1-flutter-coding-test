@@ -18,8 +18,8 @@ class MessagesModel {
 
 @JsonSerializable()
 class MessageModel {
-  final String? roomId;
-  final String? messageId;
+  final String roomId;
+  final String messageId;
   final String sender;
   final String content;
   final DateTime timestamp;
@@ -36,4 +36,22 @@ class MessageModel {
       _$MessageModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessageModelToJson(this);
+}
+
+@JsonSerializable()
+class LastMessageModel {
+  final String sender;
+  final String content;
+  final DateTime timestamp;
+
+  LastMessageModel({
+    required this.sender,
+    required this.content,
+    required this.timestamp,
+  });
+
+  factory LastMessageModel.fromJson(Map<String, dynamic> json) =>
+      _$LastMessageModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LastMessageModelToJson(this);
 }
