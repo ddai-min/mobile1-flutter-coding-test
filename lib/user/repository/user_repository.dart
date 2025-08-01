@@ -1,4 +1,4 @@
-import 'package:mobile1_flutter_coding_test/common/repository/json_to_model.dart';
+import 'package:mobile1_flutter_coding_test/common/util/json_to_model.dart';
 import 'package:mobile1_flutter_coding_test/user/model/users_model.dart';
 
 class UserRepository {

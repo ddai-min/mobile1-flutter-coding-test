@@ -65,7 +65,16 @@ class _RoomScreenState extends State<RoomScreen> {
                   ),
                   MessageSendTextField(
                     controller: controller,
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (controller.text.isEmpty) return;
+
+                      await _roomRepository.postMessage(
+                        roomId: widget.id,
+                        content: controller.text,
+                      );
+
+                      setState(() {});
+                    },
                   ),
                 ],
               ),
