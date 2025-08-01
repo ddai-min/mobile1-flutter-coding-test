@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile1_flutter_coding_test/common/layout/default_layout.dart';
-import 'package:mobile1_flutter_coding_test/room/view/room_screen.dart';
-import 'package:mobile1_flutter_coding_test/user/view/user_screen.dart';
+import 'package:mobile1_flutter_coding_test/room/view/room_list_screen.dart';
+import 'package:mobile1_flutter_coding_test/user/view/user_list_screen.dart';
 
 class RootTab extends StatefulWidget {
   static String get routeName => '/';
@@ -47,8 +47,8 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
         children: [
-          UserScreen(),
-          RoomScreen(),
+          UserListScreen(),
+          RoomListScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -17,7 +17,6 @@ class DefaultLayout extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: SafeArea(
-        bottom: false,
         child: body,
       ),
       bottomNavigationBar: bottomNavigationBar,

@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:mobile1_flutter_coding_test/common/view/root_tab.dart';
-import 'package:mobile1_flutter_coding_test/room/view/room_message_screen.dart';
+import 'package:mobile1_flutter_coding_test/room/view/room_screen.dart';
 
 final router = GoRouter(
   routes: [
@@ -10,9 +10,11 @@ final router = GoRouter(
       builder: (_, __) => const RootTab(),
       routes: [
         GoRoute(
-          path: '/room/message/:roomId',
-          name: RoomMessageScreen.routeName,
-          builder: (_, __) => const RoomMessageScreen(),
+          path: '/room/:id',
+          name: RoomScreen.routeName,
+          builder: (_, state) => RoomScreen(
+            id: state.pathParameters['id']!,
+          ),
         ),
       ],
     ),
