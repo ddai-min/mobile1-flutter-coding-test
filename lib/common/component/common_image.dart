@@ -21,6 +21,7 @@ class CommonImage extends StatelessWidget {
         height: height,
         child: CachedNetworkImage(
           imageUrl: imageUrl,
+          placeholder: (context, url) => const CircularProgressIndicator(),
           errorWidget: (context, url, error) {
             return const Icon(
               Icons.error,
