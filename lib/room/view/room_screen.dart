@@ -29,7 +29,7 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
   Widget build(BuildContext context) {
     final userMe = ref.watch(userMeProvider);
     final messageList = ref.watch(
-      getMessageListProvider(widget.id),
+      messageProvider(widget.id),
     );
 
     return DefaultLayout(
@@ -43,19 +43,13 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
         onMessageSend: () async {
           if (controller.text.isEmpty) return;
 
-          await ref.read(
-            postMessageProvider(
-              PostMessageParams(
-                userId: userMe.userId,
-                roomId: widget.id,
-                content: controller.text,
-              ),
-            ).future,
-          );
-
-          ref.invalidate(
-            getMessageListProvider(widget.id),
-          );
+          await ref.read(messageProvider(widget.id).notifier).postMessage(
+                PostMessageParams(
+                  userId: userMe.userId,
+                  roomId: widget.id,
+                  content: controller.text,
+                ),
+              );
 
           controller.clear();
         },

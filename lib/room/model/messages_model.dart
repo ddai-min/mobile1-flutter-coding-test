@@ -14,6 +14,14 @@ class MessagesModel {
       _$MessagesModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessagesModelToJson(this);
+
+  MessagesModel copyWith({
+    List<MessageModel>? messages,
+  }) {
+    return MessagesModel(
+      messages: messages ?? this.messages,
+    );
+  }
 }
 
 @JsonSerializable()
