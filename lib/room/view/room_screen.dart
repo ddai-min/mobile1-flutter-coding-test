@@ -6,6 +6,7 @@ import 'package:mobile1_flutter_coding_test/room/component/message_send_text_fie
 import 'package:mobile1_flutter_coding_test/room/model/message_parameter.dart';
 import 'package:mobile1_flutter_coding_test/room/model/messages_model.dart';
 import 'package:mobile1_flutter_coding_test/room/provider/message_provider.dart';
+import 'package:mobile1_flutter_coding_test/user/provider/user_me_provider.dart';
 
 class RoomScreen extends ConsumerStatefulWidget {
   static String routeName = 'room';
@@ -26,6 +27,7 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final userMe = ref.watch(userMeProvider);
     final messageList = ref.watch(
       getMessageListProvider(widget.id),
     );
@@ -35,6 +37,7 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
         title: const Text('data'),
       ),
       body: _Body(
+        userId: userMe.userId,
         provider: messageList,
         textFieldController: controller,
         onMessageSend: () async {
@@ -43,6 +46,7 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
           await ref.read(
             postMessageProvider(
               PostMessageParams(
+                userId: userMe.userId,
                 roomId: widget.id,
                 content: controller.text,
               ),
@@ -61,11 +65,13 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
 }
 
 class _Body extends StatelessWidget {
+  final String userId;
   final AsyncValue<MessagesModel> provider;
   final TextEditingController textFieldController;
   final VoidCallback onMessageSend;
 
   const _Body({
+    required this.userId,
     required this.provider,
     required this.textFieldController,
     required this.onMessageSend,
@@ -98,6 +104,7 @@ class _Body extends StatelessWidget {
                     return MessageBubble(
                       sender: messages[index].sender,
                       content: messages[index].content,
+                      isMe: messages[index].sender == userId,
                     );
                   },
                 ),

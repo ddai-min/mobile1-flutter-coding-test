@@ -17,6 +17,7 @@ final getMessageListProvider =
 final postMessageProvider =
     FutureProvider.family<MessageModel, PostMessageParams>((ref, params) async {
   final result = await _messageRepository.postMessage(
+    userId: params.userId,
     roomId: params.roomId,
     content: params.content,
   );

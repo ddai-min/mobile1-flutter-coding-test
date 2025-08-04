@@ -37,6 +37,7 @@ class MessageRepository {
   }
 
   Future<MessageModel> postMessage({
+    required String userId,
     required String roomId,
     required String content,
   }) async {
@@ -47,7 +48,7 @@ class MessageRepository {
     final newMessage = MessageModel(
       roomId: roomId,
       messageId: DateTime.now().millisecondsSinceEpoch.toString(),
-      sender: 'User',
+      sender: userId,
       content: content,
       timestamp: DateTime.now(),
     );
