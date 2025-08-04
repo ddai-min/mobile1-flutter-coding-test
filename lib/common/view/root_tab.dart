@@ -25,12 +25,12 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
       length: 2,
       vsync: this,
     );
-    _tabController.addListener(tabListener);
+    _tabController.addListener(_tabListener);
   }
 
   @override
   void dispose() {
-    _tabController.removeListener(tabListener);
+    _tabController.removeListener(_tabListener);
     _tabController.dispose();
 
     super.dispose();
@@ -46,7 +46,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           UserListScreen(),
           RoomListScreen(),
         ],
@@ -70,7 +70,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
     );
   }
 
-  void tabListener() {
+  void _tabListener() {
     setState(() {
       index = _tabController.index;
     });

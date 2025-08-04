@@ -23,7 +23,16 @@ class RoomScreen extends ConsumerStatefulWidget {
 }
 
 class _RoomScreenState extends ConsumerState<RoomScreen> {
-  TextEditingController controller = TextEditingController();
+  ScrollController scrollController = ScrollController();
+  TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    textEditingController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,42 +47,55 @@ class _RoomScreenState extends ConsumerState<RoomScreen> {
       ),
       body: _Body(
         userId: userMe.userId,
-        provider: messageList,
-        textFieldController: controller,
-        onMessageSend: () async {
-          if (controller.text.isEmpty) return;
-
-          await ref.read(messageProvider(widget.id).notifier).postMessage(
-                PostMessageParams(
-                  userId: userMe.userId,
-                  roomId: widget.id,
-                  content: controller.text,
-                ),
-              );
-
-          controller.clear();
+        messageList: messageList,
+        scrollController: scrollController,
+        textFieldController: textEditingController,
+        onMessageSend: () {
+          _onMessageSend(
+            userId: userMe.userId,
+          );
         },
       ),
     );
+  }
+
+  void _onMessageSend({
+    required String userId,
+  }) async {
+    if (textEditingController.text.isEmpty) return;
+
+    await ref.read(messageProvider(widget.id).notifier).postMessage(
+          PostMessageParams(
+            userId: userId,
+            roomId: widget.id,
+            content: textEditingController.text,
+          ),
+        );
+
+    textEditingController.clear();
+
+    scrollController.jumpTo(0);
   }
 }
 
 class _Body extends StatelessWidget {
   final String userId;
-  final AsyncValue<MessagesModel> provider;
+  final AsyncValue<MessagesModel> messageList;
+  final ScrollController scrollController;
   final TextEditingController textFieldController;
   final VoidCallback onMessageSend;
 
   const _Body({
     required this.userId,
-    required this.provider,
+    required this.messageList,
+    required this.scrollController,
     required this.textFieldController,
     required this.onMessageSend,
   });
 
   @override
   Widget build(BuildContext context) {
-    return provider.when(
+    return messageList.when(
       loading: () {
         return const Center(
           child: CircularProgressIndicator(),
@@ -85,7 +107,8 @@ class _Body extends StatelessWidget {
         );
       },
       data: (data) {
-        final messages = data.messages;
+        List<MessageModel> messages = data.messages;
+        messages = messages.reversed.toList();
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -93,6 +116,8 @@ class _Body extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
+                  controller: scrollController,
+                  reverse: true,
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     return MessageBubble(
