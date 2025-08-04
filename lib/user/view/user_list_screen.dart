@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile1_flutter_coding_test/user/component/user_detail_dialog.dart';
 import 'package:mobile1_flutter_coding_test/user/component/user_list_item.dart';
-import 'package:mobile1_flutter_coding_test/user/repository/user_repository.dart';
+import 'package:mobile1_flutter_coding_test/user/provider/user_provider.dart';
 
-class UserListScreen extends StatelessWidget {
-  final UserRepository _userRepository = UserRepository();
-
-  UserListScreen({super.key});
+class UserListScreen extends ConsumerWidget {
+  const UserListScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _userRepository.getUsers(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userList = ref.watch(getUserListProvider);
 
-        if (snapshot.hasError) {
-          return Center(
-            child: Text('Error: ${snapshot.error}'),
-          );
-        }
-
-        final users = snapshot.data?.users ?? [];
+    return userList.when(
+      loading: () {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+      error: (error, stack) {
+        return Center(
+          child: Text('Error: $error'),
+        );
+      },
+      data: (data) {
+        final users = data.users;
 
         return ListView.builder(
           itemCount: users.length,
